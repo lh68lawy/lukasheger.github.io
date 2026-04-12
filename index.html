@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lukas Heger — Actor & Model</title>
+    <meta name="description" content="Lukas Heger — Schauspieler, Model und Kleindarsteller aus Berlin. Verfügbar für Film, Serie, Werbung und Editorial.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* ─── Reset & Base ─── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #0a0a0a;
+            --white: #f5f4f0;
+            --grey: #b0aba3;
+            --grey-light: #e8e6e1;
+            --grey-dark: #3a3a3a;
+            --accent: #c9b99a;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--black);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { display: block; max-width: 100%; height: auto; }
+
+        /* ─── Navigation ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.4s ease, backdrop-filter 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(245, 244, 240, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--grey-light);
+        }
+
+        .nav-name {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            color: var(--white);
+            transition: color 0.4s ease;
+        }
+
+        nav.scrolled .nav-name { color: var(--black); }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--white);
+            transition: color 0.4s ease, opacity 0.3s ease;
+            opacity: 0.85;
+        }
+
+        .nav-links a:hover { opacity: 1; }
+        nav.scrolled .nav-links a { color: var(--black); }
+
+        /* Mobile nav toggle */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--white);
+            transition: background 0.4s ease;
+        }
+        nav.scrolled .nav-toggle span { background: var(--black); }
+
+        /* ─── Hero Section ─── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            background: var(--black);
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            background: url('images/editorial-03.jpg') center top / cover no-repeat;
+            opacity: 0.7;
+            transition: transform 8s ease-out;
+        }
+
+        .hero:hover .hero-image {
+            transform: scale(1.02);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(10, 10, 10, 0.85) 0%,
+                rgba(10, 10, 10, 0.3) 40%,
+                rgba(10, 10, 10, 0.15) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 3rem 5rem;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--grey);
+            letter-spacing: 0.06em;
+            max-width: 480px;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            right: 3rem;
+            z-index: 2;
+            writing-mode: vertical-rl;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--grey);
+            opacity: 0.6;
+            animation: float 2.5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        /* ─── Section Base ─── */
+        section {
+            padding: 6rem 3rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        /* ─── Portfolio Gallery ─── */
+        #portfolio {
+            background: var(--white);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-tabs {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--grey-light);
+            padding-bottom: 1rem;
+        }
+
+        .gallery-tab {
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--grey);
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .gallery-tab.active,
+        .gallery-tab:hover {
+            color: var(--black);
+        }
+
+        .gallery-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1.05rem;
+            left: 0;
+            right: 0;
+            height: 1.5px;
+            background: var(--black);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.04);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 10, 0);
+            transition: background 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            background: rgba(10, 10, 10, 0.25);
+        }
+
+        .gallery-item-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-item-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-section { display: none; }
+        .gallery-section.active { display: grid; }
+
+        /* ─── About / Sedcard ─── */
+        #about {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 3rem;
+        }
+
+        .sedcard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .sedcard-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .sedcard-label {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-bottom: 0.2rem;
+        }
+
+        .sedcard-value {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--white);
+        }
+
+        /* ─── Skills Section ─── */
+        #skills {
+            background: var(--white);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .skill-category h3 {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--grey-light);
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .skill-level {
+            display: flex;
+            gap: 3px;
+        }
+
+        .skill-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--grey-light);
+        }
+
+        .skill-dot.filled {
+            background: var(--black);
+        }
+
+        /* ─── Contact ─── */
+        #contact {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 8rem 3rem;
+        }
+
+        #contact .section-title {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .contact-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--grey);
+            margin-bottom: 3rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-email {
+            display: inline-block;
+            font-family: var(--font-serif);
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 400;
+            color: var(--white);
+            border-bottom: 1px solid var(--grey);
+            padding-bottom: 4px;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-email:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .contact-links {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .contact-link {
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--grey);
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--white);
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            background: var(--black);
+            color: var(--grey);
+            text-align: center;
+            padding: 2rem 3rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.06em;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        /* ─── Lightbox ─── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(10, 10, 10, 0.95);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+            background: none;
+            border: none;
+            font-family: var(--font-sans);
+            font-weight: 300;
+        }
+
+        .lightbox-close:hover { opacity: 1; }
+
+        /* ─── Animations ─── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 900px) {
+            nav { padding: 1.2rem 1.5rem; }
+            section { padding: 4rem 1.5rem; }
+
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(245, 244, 240, 0.97);
+                backdrop-filter: blur(12px);
+                padding: 1.5rem;
+                gap: 1.2rem;
+            }
+            .nav-links.open a { color: var(--black); }
+            .nav-toggle { display: flex; }
+
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+            .hero-content { padding: 0 1.5rem 4rem; }
+            .hero-scroll { display: none; }
+        }
+
+        @media (max-width: 520px) {
+            .gallery-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+            .sedcard-grid { grid-template-columns: 1fr; }
+            .gallery-tabs { gap: 1.2rem; }
+            #contact { padding: 5rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+    <a href="#" class="nav-name">Lukas Heger</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-image"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>Lukas Heger</h1>
+        <p>Actor &middot; Model &middot; Berlin</p>
+    </div>
+    <span class="hero-scroll">Scroll</span>
+</section>
+
+<!-- Portfolio -->
+<section id="portfolio">
+    <span class="section-label fade-in">Portfolio</span>
+    <h2 class="section-title fade-in">Selected Work</h2>
+
+    <div class="gallery-tabs fade-in">
+        <button class="gallery-tab active" data-tab="all">All</button>
+        <button class="gallery-tab" data-tab="sedcard">Sedcard</button>
+        <button class="gallery-tab" data-tab="editorial">Editorial</button>
+    </div>
+
+    <!-- All -->
+    <div class="gallery-grid gallery-section active" data-gallery="all">
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/front.jpeg" alt="Lukas Heger — Front" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">3/4 Front</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-03.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Editorial — Analog</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/portrait.jpeg" alt="Lukas Heger — Portrait" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Portrait</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-04.jpg" alt="Lukas Heger — Editorial Chair" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Editorial — Chair</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/fullbody.jpeg" alt="Lukas Heger — Full Body" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Full Body</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-05.jpg" alt="Lukas Heger — Editorial Moody" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Editorial — Moody</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/profile-left.jpeg" alt="Lukas Heger — Profile" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Profile</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-02.jpg" alt="Lukas Heger — Editorial Vest" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Editorial — Vest</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/torso.jpeg" alt="Lukas Heger — Torso" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Torso</span></div>
+        </div>
+    </div>
+
+    <!-- Sedcard only -->
+    <div class="gallery-grid gallery-section" data-gallery="sedcard">
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/front.jpeg" alt="Lukas Heger — Front" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">3/4 Front</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/portrait.jpeg" alt="Lukas Heger — Portrait" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Portrait</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/fullbody.jpeg" alt="Lukas Heger — Full Body" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Full Body</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/profile-left.jpeg" alt="Lukas Heger — Profile Left" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Profile Left</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/profile-right.jpeg" alt="Lukas Heger — Profile Right" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Profile Right</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/torso.jpeg" alt="Lukas Heger — Torso" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Torso</span></div>
+        </div>
+    </div>
+
+    <!-- Editorial only -->
+    <div class="gallery-grid gallery-section" data-gallery="editorial">
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-01.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog I</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-02.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog II</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-03.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog III</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-04.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog IV</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-05.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog V</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-06.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog VI</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about">
+    <div class="about-grid">
+        <div class="about-image fade-in">
+            <img src="images/editorial-04.jpg" alt="Lukas Heger">
+        </div>
+        <div class="about-content fade-in">
+            <span class="section-label" style="color: var(--grey);">About</span>
+            <h2 class="section-title" style="color: var(--white);">&Uuml;ber mich</h2>
+            <p class="about-text">
+                Schauspieler und Model aus Berlin. Verf&uuml;gbar f&uuml;r Film, Serie, Werbung, Editorial und k&uuml;nstlerische Projekte. Spontan einsetzbar in Berlin, Hamburg, Leipzig, Hannover und Stuttgart.
+            </p>
+
+            <div class="sedcard-grid">
+                <div class="sedcard-item">
+                    <div class="sedcard-label">Alter</div>
+                    <div class="sedcard-value">33</div>
+                </div>
+                <div class="sedcard-item">
+                    <div class="sedcard-label">Gr&ouml;&szlig;e</div>
+                    <div class="sedcard-value">180 cm</div>
+                </div>
+                <div class="sedcard-item">
+                    <div class="sedcard-label">Gewicht</div>
+                    <div class="sedcard-value">70 kg</div>
+                </div>
+                <div class="sedcard-item">
+                    <div class="sedcard-label">Statur</div>
+                    <div class="sedcard-value">Sportlich</div>
+                </div>
+                <div class="sedcard-item">
+                    <div class="sedcard-label">Augen</div>
+                    <div class="sedcard-value">Gr&uuml;n</div>
+                </div>
+                <div class="sedcard-item">
+                    <div class="sedcard-label">Haare</div>
+                    <div class="sedcard-value">Blond, mittellang</div>
+                </div>
+                <div class="sedcard-item">
+                    <div class="sedcard-label">Konfektion</div>
+                    <div class="sedcard-value">48 / 48</div>
+                </div>
+                <div class="sedcard-item">
+                    <div class="sedcard-label">Schuhe</div>
+                    <div class="sedcard-value">43</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+    <span class="section-label fade-in">Expertise</span>
+    <h2 class="section-title fade-in">F&auml;higkeiten</h2>
+
+    <div class="skills-grid fade-in">
+        <div class="skill-category">
+            <h3>Sprachen</h3>
+            <div class="skill-item">
+                <span>Deutsch</span>
+                <div class="skill-level">
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot filled"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <span>Englisch</span>
+                <div class="skill-level">
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot filled"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <span>Russisch</span>
+                <div class="skill-level">
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skill-category">
+            <h3>Instrumente</h3>
+            <div class="skill-item">
+                <span>Gitarre</span>
+                <div class="skill-level">
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <span>Klavier</span>
+                <div class="skill-level">
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <span>Trompete</span>
+                <div class="skill-level">
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot filled"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <span>E-Gitarre</span>
+                <div class="skill-level">
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <span>Bass</span>
+                <div class="skill-level">
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot filled"></div>
+                    <div class="skill-dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skill-category">
+            <h3>Sport</h3>
+            <div class="skill-item"><span>Fu&szlig;ball</span></div>
+            <div class="skill-item"><span>Basketball</span></div>
+            <div class="skill-item"><span>Bouldern</span></div>
+            <div class="skill-item"><span>Leichtathletik</span></div>
+            <div style="margin-top: 1.5rem;">
+                <h3>Stimmlage</h3>
+                <div class="skill-item"><span>Bariton</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <span class="section-label fade-in" style="color: var(--grey);">Kontakt</span>
+    <h2 class="section-title fade-in">Let's work together</h2>
+    <p class="contact-subtitle fade-in">
+        Verf&uuml;gbar f&uuml;r Film, Werbung, Editorial und k&uuml;nstlerische Projekte. Spontan einsetzbar.
+    </p>
+    <a href="mailto:p.fiedler@posteo.de" class="contact-email fade-in">p.fiedler@posteo.de</a>
+
+    <div class="contact-links fade-in">
+        <a href="https://www.castingbase.de" target="_blank" rel="noopener" class="contact-link">Castingbase</a>
+        <a href="https://www.filmgesichter.de" target="_blank" rel="noopener" class="contact-link">Filmgesichter</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="contact-link">Instagram</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    &copy; 2026 Lukas Heger. All rights reserved.
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+    // ─── Nav scroll effect ───
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // ─── Close mobile nav on link click ───
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.remove('open');
+        });
+    });
+
+    // ─── Gallery tabs ───
+    document.querySelectorAll('.gallery-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const target = tab.dataset.tab;
+            document.querySelectorAll('.gallery-section').forEach(g => {
+                g.classList.toggle('active', g.dataset.gallery === target);
+            });
+        });
+    });
+
+    // ─── Lightbox ───
+    function openLightbox(el) {
+        const src = el.querySelector('img').src;
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ─── Scroll fade-in ───
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
