@@ -13,12 +13,14 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --black: #0a0a0a;
-            --white: #f5f4f0;
-            --grey: #b0aba3;
-            --grey-light: #e8e6e1;
-            --grey-dark: #3a3a3a;
-            --accent: #c9b99a;
+            --black: #16161d;
+            --black-deep: #111117;
+            --white: #ede8e0;
+            --white-warm: #e6e0d6;
+            --grey: #a09889;
+            --grey-light: #d6d0c6;
+            --grey-dark: #3a3835;
+            --accent: #c4b498;
             --font-sans: 'Inter', -apple-system, sans-serif;
             --font-serif: 'Playfair Display', Georgia, serif;
         }
@@ -51,7 +53,7 @@
         }
 
         nav.scrolled {
-            background: rgba(245, 244, 240, 0.9);
+            background: rgba(237, 232, 224, 0.92);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--grey-light);
         }
@@ -113,14 +115,14 @@
             display: flex;
             align-items: flex-end;
             overflow: hidden;
-            background: var(--black);
+            background: var(--black-deep);
         }
 
         .hero-image {
             position: absolute;
             inset: 0;
-            background: url('images/editorial-03.jpg') center top / cover no-repeat;
-            opacity: 0.7;
+            background: url('images/hero.jpg') center top / cover no-repeat;
+            opacity: 0.72;
             transition: transform 8s ease-out;
         }
 
@@ -133,9 +135,9 @@
             inset: 0;
             background: linear-gradient(
                 to top,
-                rgba(10, 10, 10, 0.85) 0%,
-                rgba(10, 10, 10, 0.3) 40%,
-                rgba(10, 10, 10, 0.15) 100%
+                rgba(22, 22, 29, 0.88) 0%,
+                rgba(22, 22, 29, 0.3) 40%,
+                rgba(22, 22, 29, 0.12) 100%
             );
         }
 
@@ -275,7 +277,7 @@
         .gallery-item-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(10, 10, 10, 0);
+            background: rgba(22, 22, 29, 0);
             transition: background 0.4s ease;
             display: flex;
             align-items: flex-end;
@@ -283,7 +285,7 @@
         }
 
         .gallery-item:hover .gallery-item-overlay {
-            background: rgba(10, 10, 10, 0.25);
+            background: rgba(22, 22, 29, 0.25);
         }
 
         .gallery-item-label {
@@ -338,7 +340,7 @@
             font-size: 1.05rem;
             font-weight: 300;
             line-height: 1.8;
-            color: #ccc;
+            color: var(--grey-light);
             margin-bottom: 3rem;
         }
 
@@ -350,7 +352,7 @@
 
         .sedcard-item {
             padding: 0.9rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(237, 232, 224, 0.08);
         }
 
         .sedcard-label {
@@ -368,35 +370,73 @@
             color: var(--white);
         }
 
-        /* ─── Skills Section ─── */
-        #skills {
-            background: var(--white);
-            max-width: 1200px;
-            margin: 0 auto;
+        /* ─── Skills (collapsible sub-page) ─── */
+        .skills-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--grey);
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            margin-top: 2.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .skills-toggle:hover { color: var(--white); }
+
+        .skills-toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 0.65rem;
+        }
+
+        .skills-toggle.open .skills-toggle-arrow {
+            transform: rotate(90deg);
+        }
+
+        .skills-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .skills-panel.open {
+            max-height: 600px;
+            opacity: 1;
         }
 
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 3rem;
+            padding-top: 2rem;
         }
 
         .skill-category h3 {
             font-family: var(--font-serif);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 400;
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid var(--grey-light);
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid rgba(237, 232, 224, 0.1);
+            color: var(--white);
         }
 
         .skill-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.6rem 0;
-            font-size: 0.9rem;
+            padding: 0.5rem 0;
+            font-size: 0.85rem;
             font-weight: 300;
+            color: var(--grey-light);
         }
 
         .skill-level {
@@ -408,11 +448,11 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: var(--grey-light);
+            background: var(--grey-dark);
         }
 
         .skill-dot.filled {
-            background: var(--black);
+            background: var(--accent);
         }
 
         /* ─── Contact ─── */
@@ -476,13 +516,13 @@
 
         /* ─── Footer ─── */
         footer {
-            background: var(--black);
+            background: var(--black-deep);
             color: var(--grey);
             text-align: center;
             padding: 2rem 3rem;
             font-size: 0.7rem;
             letter-spacing: 0.06em;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(237, 232, 224, 0.05);
         }
 
         /* ─── Lightbox ─── */
@@ -491,7 +531,7 @@
             position: fixed;
             inset: 0;
             z-index: 200;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(17, 17, 23, 0.95);
             align-items: center;
             justify-content: center;
             cursor: pointer;
@@ -549,7 +589,7 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: rgba(245, 244, 240, 0.97);
+                background: rgba(237, 232, 224, 0.97);
                 backdrop-filter: blur(12px);
                 padding: 1.5rem;
                 gap: 1.2rem;
@@ -584,7 +624,6 @@
     <ul class="nav-links">
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
@@ -611,99 +650,139 @@
         <button class="gallery-tab" data-tab="editorial">Editorial</button>
     </div>
 
-    <!-- All -->
+    <!-- All — mixed, sedcard-order first then editorial highlights -->
     <div class="gallery-grid gallery-section active" data-gallery="all">
-        <div class="gallery-item" onclick="openLightbox(this)">
-            <img src="images/front.jpeg" alt="Lukas Heger — Front" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">3/4 Front</span></div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-            <img src="images/editorial-03.jpg" alt="Lukas Heger — Editorial" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">Editorial — Analog</span></div>
-        </div>
         <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/portrait.jpeg" alt="Lukas Heger — Portrait" loading="lazy">
             <div class="gallery-item-overlay"><span class="gallery-item-label">Portrait</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
-            <img src="images/editorial-04.jpg" alt="Lukas Heger — Editorial Chair" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">Editorial — Chair</span></div>
+            <img src="images/editorial-04.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Editorial</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/front.jpeg" alt="Lukas Heger — Front" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">3/4 Front</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-09.jpg" alt="Lukas Heger — Suit" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Suit</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/fullbody.jpeg" alt="Lukas Heger — Full Body" loading="lazy">
             <div class="gallery-item-overlay"><span class="gallery-item-label">Full Body</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
-            <img src="images/editorial-05.jpg" alt="Lukas Heger — Editorial Moody" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">Editorial — Moody</span></div>
+            <img src="images/editorial-11.jpg" alt="Lukas Heger — Dynamic" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Dynamic</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/profile-left.jpeg" alt="Lukas Heger — Profile" loading="lazy">
             <div class="gallery-item-overlay"><span class="gallery-item-label">Profile</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
-            <img src="images/editorial-02.jpg" alt="Lukas Heger — Editorial Vest" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">Editorial — Vest</span></div>
+            <img src="images/editorial-07.jpg" alt="Lukas Heger — Vest" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Vest</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/torso.jpeg" alt="Lukas Heger — Torso" loading="lazy">
             <div class="gallery-item-overlay"><span class="gallery-item-label">Torso</span></div>
         </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-13.jpg" alt="Lukas Heger — Studio" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Studio</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-12.jpg" alt="Lukas Heger — Chair" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Chair</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-03.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog</span></div>
+        </div>
     </div>
 
-    <!-- Sedcard only -->
+    <!-- Sedcard — order matches PDF: portrait, bare chest, grey sweater, profile, front, fullbody, torso -->
     <div class="gallery-grid gallery-section" data-gallery="sedcard">
-        <div class="gallery-item" onclick="openLightbox(this)">
-            <img src="images/front.jpeg" alt="Lukas Heger — Front" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">3/4 Front</span></div>
-        </div>
         <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/portrait.jpeg" alt="Lukas Heger — Portrait" loading="lazy">
             <div class="gallery-item-overlay"><span class="gallery-item-label">Portrait</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
-            <img src="images/fullbody.jpeg" alt="Lukas Heger — Full Body" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">Full Body</span></div>
+            <img src="images/torso.jpeg" alt="Lukas Heger — Torso" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Torso</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/front.jpeg" alt="Lukas Heger — 3/4 Front" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">3/4 Front</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/profile-left.jpeg" alt="Lukas Heger — Profile Left" loading="lazy">
             <div class="gallery-item-overlay"><span class="gallery-item-label">Profile Left</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/fullbody.jpeg" alt="Lukas Heger — Full Body" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Full Body</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/profile-right.jpeg" alt="Lukas Heger — Profile Right" loading="lazy">
             <div class="gallery-item-overlay"><span class="gallery-item-label">Profile Right</span></div>
         </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-            <img src="images/torso.jpeg" alt="Lukas Heger — Torso" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">Torso</span></div>
-        </div>
     </div>
 
-    <!-- Editorial only -->
+    <!-- Editorial — full analog series, broad palette -->
     <div class="gallery-grid gallery-section" data-gallery="editorial">
         <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/editorial-01.jpg" alt="Lukas Heger — Editorial" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog I</span></div>
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Vest I</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-07.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Vest II</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-08.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Vest III</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/editorial-02.jpg" alt="Lukas Heger — Editorial" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog II</span></div>
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Open Suit</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-09.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Suit — Standing</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-10.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Suit — Pose</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/editorial-03.jpg" alt="Lukas Heger — Editorial" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog III</span></div>
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Window</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-11.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Dynamic</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/editorial-04.jpg" alt="Lukas Heger — Editorial" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog IV</span></div>
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Chair I</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-12.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Chair II</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/editorial-05.jpg" alt="Lukas Heger — Editorial" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog V</span></div>
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Moody</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/editorial-13.jpg" alt="Lukas Heger — Editorial" loading="lazy">
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Studio Wide</span></div>
         </div>
         <div class="gallery-item" onclick="openLightbox(this)">
             <img src="images/editorial-06.jpg" alt="Lukas Heger — Editorial" loading="lazy">
-            <div class="gallery-item-overlay"><span class="gallery-item-label">Analog VI</span></div>
+            <div class="gallery-item-overlay"><span class="gallery-item-label">Studio Distance</span></div>
         </div>
     </div>
 </section>
@@ -712,13 +791,13 @@
 <section id="about">
     <div class="about-grid">
         <div class="about-image fade-in">
-            <img src="images/editorial-04.jpg" alt="Lukas Heger">
+            <img src="images/editorial-10.jpg" alt="Lukas Heger">
         </div>
         <div class="about-content fade-in">
             <span class="section-label" style="color: var(--grey);">About</span>
             <h2 class="section-title" style="color: var(--white);">&Uuml;ber mich</h2>
             <p class="about-text">
-                Schauspieler und Model aus Berlin. Verf&uuml;gbar f&uuml;r Film, Serie, Werbung, Editorial und k&uuml;nstlerische Projekte. Spontan einsetzbar in Berlin, Hamburg, Leipzig, Hannover und Stuttgart.
+                Schauspieler und Model. Based in Berlin. Verf&uuml;gbar f&uuml;r Film, Serie, Werbung, Editorial und k&uuml;nstlerische Projekte.
             </p>
 
             <div class="sedcard-grid">
@@ -755,97 +834,98 @@
                     <div class="sedcard-value">43</div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
 
-<!-- Skills -->
-<section id="skills">
-    <span class="section-label fade-in">Expertise</span>
-    <h2 class="section-title fade-in">F&auml;higkeiten</h2>
+            <!-- Skills as collapsible submenu -->
+            <button class="skills-toggle" onclick="this.classList.toggle('open'); document.getElementById('skills-panel').classList.toggle('open');">
+                <span class="skills-toggle-arrow">&#9654;</span> Skills &amp; Expertise
+            </button>
 
-    <div class="skills-grid fade-in">
-        <div class="skill-category">
-            <h3>Sprachen</h3>
-            <div class="skill-item">
-                <span>Deutsch</span>
-                <div class="skill-level">
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot filled"></div>
-                </div>
-            </div>
-            <div class="skill-item">
-                <span>Englisch</span>
-                <div class="skill-level">
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot filled"></div>
-                </div>
-            </div>
-            <div class="skill-item">
-                <span>Russisch</span>
-                <div class="skill-level">
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot"></div>
-                </div>
-            </div>
-        </div>
+            <div id="skills-panel" class="skills-panel">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Sprachen</h3>
+                        <div class="skill-item">
+                            <span>Deutsch</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Englisch</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Russisch</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="skill-category">
-            <h3>Instrumente</h3>
-            <div class="skill-item">
-                <span>Gitarre</span>
-                <div class="skill-level">
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot"></div>
-                </div>
-            </div>
-            <div class="skill-item">
-                <span>Klavier</span>
-                <div class="skill-level">
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot"></div>
-                </div>
-            </div>
-            <div class="skill-item">
-                <span>Trompete</span>
-                <div class="skill-level">
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot filled"></div>
-                </div>
-            </div>
-            <div class="skill-item">
-                <span>E-Gitarre</span>
-                <div class="skill-level">
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot"></div>
-                </div>
-            </div>
-            <div class="skill-item">
-                <span>Bass</span>
-                <div class="skill-level">
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot filled"></div>
-                    <div class="skill-dot"></div>
-                </div>
-            </div>
-        </div>
+                    <div class="skill-category">
+                        <h3>Instrumente</h3>
+                        <div class="skill-item">
+                            <span>Gitarre</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Klavier</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Trompete</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>E-Gitarre</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Bass</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="skill-category">
-            <h3>Sport</h3>
-            <div class="skill-item"><span>Fu&szlig;ball</span></div>
-            <div class="skill-item"><span>Basketball</span></div>
-            <div class="skill-item"><span>Bouldern</span></div>
-            <div class="skill-item"><span>Leichtathletik</span></div>
-            <div style="margin-top: 1.5rem;">
-                <h3>Stimmlage</h3>
-                <div class="skill-item"><span>Bariton</span></div>
+                    <div class="skill-category">
+                        <h3>Sport</h3>
+                        <div class="skill-item"><span>Fu&szlig;ball</span></div>
+                        <div class="skill-item"><span>Basketball</span></div>
+                        <div class="skill-item"><span>Bouldern</span></div>
+                        <div class="skill-item"><span>Leichtathletik</span></div>
+                        <div style="margin-top: 1.2rem;">
+                            <h3>Stimmlage</h3>
+                            <div class="skill-item"><span>Bariton</span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -856,14 +936,13 @@
     <span class="section-label fade-in" style="color: var(--grey);">Kontakt</span>
     <h2 class="section-title fade-in">Let's work together</h2>
     <p class="contact-subtitle fade-in">
-        Verf&uuml;gbar f&uuml;r Film, Werbung, Editorial und k&uuml;nstlerische Projekte. Spontan einsetzbar.
+        Verf&uuml;gbar f&uuml;r Film, Werbung, Editorial und k&uuml;nstlerische Projekte.
     </p>
-    <a href="mailto:p.fiedler@posteo.de" class="contact-email fade-in">p.fiedler@posteo.de</a>
+    <a href="mailto:lukas.heger@mailbox.org" class="contact-email fade-in">lukas.heger@mailbox.org</a>
 
     <div class="contact-links fade-in">
         <a href="https://www.castingbase.de" target="_blank" rel="noopener" class="contact-link">Castingbase</a>
-        <a href="https://www.filmgesichter.de" target="_blank" rel="noopener" class="contact-link">Filmgesichter</a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="contact-link">Instagram</a>
+        <a href="https://www.instagram.com/sygchysis" target="_blank" rel="noopener" class="contact-link">Instagram</a>
     </div>
 </section>
 
