@@ -38,10 +38,32 @@
         a { color: inherit; text-decoration: none; }
         img { display: block; max-width: 100%; height: auto; }
 
+        /* ─── Top Banner ─── */
+        .top-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 110;
+            background: #FA6400;
+            color: #fff;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            transition: transform 0.4s ease;
+        }
+
+        .top-banner.hidden {
+            transform: translateY(-100%);
+        }
+
         /* ─── Navigation ─── */
         nav {
             position: fixed;
-            top: 0;
+            top: 28px;
             left: 0;
             right: 0;
             z-index: 100;
@@ -698,6 +720,11 @@
 </head>
 <body>
 
+<!-- Top Banner -->
+<div class="top-banner" id="topBanner">
+    Booking &amp; inquiries: lukas.heger@mailbox.org
+</div>
+
 <!-- Navigation -->
 <nav id="navbar">
     <a href="#" class="nav-name">Lukas Heger</a>
@@ -1080,10 +1107,14 @@
 </div>
 
 <script>
-    // ─── Nav scroll effect ───
+    // ─── Nav scroll effect + banner hide ───
     const nav = document.getElementById('navbar');
+    const banner = document.getElementById('topBanner');
     window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 80);
+        const scrolled = window.scrollY > 80;
+        nav.classList.toggle('scrolled', scrolled);
+        banner.classList.toggle('hidden', scrolled);
+        nav.style.top = scrolled ? '0' : '28px';
     });
 
     // ─── Close mobile nav on link click ───
