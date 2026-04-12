@@ -455,6 +455,89 @@
             background: var(--accent);
         }
 
+        /* ─── Press ─── */
+        #press {
+            background: var(--white-warm);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .press-feature {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .press-feature-main {
+            grid-column: 1 / -1;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .press-feature-main img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .press-feature-main:hover img {
+            transform: scale(1.02);
+        }
+
+        .press-thumb {
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .press-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .press-thumb:hover img {
+            transform: scale(1.04);
+        }
+
+        .press-credit {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: var(--grey);
+            line-height: 1.8;
+        }
+
+        .press-credit strong {
+            color: var(--black);
+            font-weight: 500;
+        }
+
+        .press-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--black);
+            border-bottom: 1px solid var(--grey-light);
+            padding-bottom: 3px;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .press-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        @media (max-width: 900px) {
+            .press-feature { grid-template-columns: 1fr; }
+        }
+
         /* ─── Contact ─── */
         #contact {
             background: var(--black);
@@ -623,6 +706,7 @@
     </button>
     <ul class="nav-links">
         <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#press">Press</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
@@ -787,6 +871,43 @@
     </div>
 </section>
 
+<!-- Press -->
+<section id="press">
+    <span class="section-label fade-in">Press</span>
+    <h2 class="section-title fade-in">Word on a Wing</h2>
+
+    <div class="press-feature fade-in">
+        <div class="press-feature-main" onclick="openLightbox(this)">
+            <img src="images/press/kaltblut-1.jpg" alt="Kaltblut Magazine — Word on a Wing" loading="lazy">
+        </div>
+        <div class="press-thumb" onclick="openLightbox(this)">
+            <img src="images/press/kaltblut-2.jpg" alt="Kaltblut Magazine — Word on a Wing" loading="lazy">
+        </div>
+        <div class="press-thumb" onclick="openLightbox(this)">
+            <img src="images/press/kaltblut-3.jpg" alt="Kaltblut Magazine — Word on a Wing" loading="lazy">
+        </div>
+        <div class="press-thumb" onclick="openLightbox(this)">
+            <img src="images/press/kaltblut-4.jpg" alt="Kaltblut Magazine — Word on a Wing" loading="lazy">
+        </div>
+        <div class="press-thumb" onclick="openLightbox(this)">
+            <img src="images/press/kaltblut-5.jpg" alt="Kaltblut Magazine — Word on a Wing" loading="lazy">
+        </div>
+        <div class="press-thumb" onclick="openLightbox(this)">
+            <img src="images/press/kaltblut-7.jpg" alt="Kaltblut Magazine — Word on a Wing" loading="lazy">
+        </div>
+        <div class="press-thumb" onclick="openLightbox(this)">
+            <img src="images/press/kaltblut-8.jpg" alt="Kaltblut Magazine — Word on a Wing" loading="lazy">
+        </div>
+    </div>
+
+    <div class="press-credit fade-in">
+        <strong>Kaltblut Magazine</strong> — &ldquo;Word on a Wing&rdquo; Editorial<br>
+        Photography: Liza Mandelshtam
+    </div>
+
+    <a href="https://www.kaltblut-magazine.com/word-on-a-wing/" target="_blank" rel="noopener" class="press-link fade-in">View in Kaltblut Magazine &rarr;</a>
+</section>
+
 <!-- About -->
 <section id="about">
     <div class="about-grid">
@@ -941,6 +1062,7 @@
     <a href="mailto:lukas.heger@mailbox.org" class="contact-email fade-in">lukas.heger@mailbox.org</a>
 
     <div class="contact-links fade-in">
+        <a href="https://www.kaltblut-magazine.com/word-on-a-wing/" target="_blank" rel="noopener" class="contact-link">Kaltblut Magazine</a>
         <a href="https://www.castingbase.de" target="_blank" rel="noopener" class="contact-link">Castingbase</a>
         <a href="https://www.instagram.com/sygchysis" target="_blank" rel="noopener" class="contact-link">Instagram</a>
     </div>
