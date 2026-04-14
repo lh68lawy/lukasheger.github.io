@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lukas Heger — Actor & Model</title>
-    <meta name="description" content="Lukas Heger — Schauspieler, Model und Kleindarsteller aus Berlin. Verfügbar für Film, Serie, Werbung und Editorial.">
+    <title>Lukas Heger — Actor & Model, Berlin</title>
+    <meta name="description" content="Lukas Heger — Actor, model & performer based in Berlin. Editorial and character work. Available for film, commercial and artistic projects.">
+    <meta name="author" content="Lukas Heger">
+    <meta name="keywords" content="Lukas Heger, Actor, Model, Schauspieler, Berlin, Kleindarsteller, Editorial, Werbung, Film, Commercial">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lukas Heger — Actor & Model, Berlin">
+    <meta property="og:description" content="Editorial and character work. Available for film, commercial and artistic projects.">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Lukas Heger">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lukas Heger — Actor & Model, Berlin">
+    <meta name="twitter:description" content="Editorial and character work. Available for film, commercial and artistic projects.">
+    <meta name="twitter:image" content="images/og-image.jpg">
+
+    <!-- Theme color for mobile browser chrome -->
+    <meta name="theme-color" content="#16161d">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -226,6 +254,122 @@
             font-weight: 400;
             line-height: 1.2;
             margin-bottom: 2rem;
+        }
+
+        /* ─── Facts at a Glance ─── */
+        #facts {
+            background: var(--black);
+            color: var(--white);
+            padding: 5rem 2rem;
+        }
+
+        .facts-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .facts-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .facts-header h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .facts-status {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.8rem 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .fact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .fact-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(237,232,224,0.45);
+            font-weight: 400;
+        }
+
+        .fact-value {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.4;
+        }
+
+        .facts-details {
+            border-top: 1px solid rgba(255,255,255,0.12);
+            padding-top: 2.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .facts-col h3 {
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(237,232,224,0.45);
+            font-weight: 400;
+            margin: 0 0 1rem 0;
+        }
+
+        .facts-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .facts-col li {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.65;
+            color: rgba(237,232,224,0.85);
+        }
+
+        .facts-col li strong {
+            color: var(--white);
+            font-weight: 400;
+        }
+
+        .facts-note {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            color: rgba(237,232,224,0.55);
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .facts-grid { gap: 1.4rem 1.5rem; grid-template-columns: repeat(2, 1fr); }
+            .fact-value { font-size: 0.95rem; }
         }
 
         /* ─── Portfolio Gallery ─── */
@@ -599,6 +743,21 @@
             color: var(--accent);
         }
 
+        .contact-phone {
+            display: block;
+            margin-top: 1.25rem;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: var(--grey);
+            transition: color 0.3s ease;
+        }
+
+        .contact-phone:hover {
+            color: var(--accent);
+        }
+
         .contact-links {
             margin-top: 3rem;
             display: flex;
@@ -732,6 +891,7 @@
         <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
+        <li><a href="#facts">Facts</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#press">Press</a></li>
         <li><a href="#about">About</a></li>
@@ -748,6 +908,91 @@
         <p>Actor &middot; Model &middot; Berlin</p>
     </div>
     <span class="hero-scroll">Scroll</span>
+</section>
+
+<!-- Facts at a Glance -->
+<section id="facts">
+    <div class="facts-inner">
+        <div class="facts-header fade-in">
+            <h2>Facts at a glance</h2>
+            <span class="facts-status">Freelance · Berlin · Direct bookings welcome</span>
+        </div>
+
+        <div class="facts-grid fade-in">
+            <div class="fact-item"><span class="fact-label">Born</span><span class="fact-value">1993 · plays 28–40</span></div>
+            <div class="fact-item"><span class="fact-label">Height</span><span class="fact-value">180 cm</span></div>
+            <div class="fact-item"><span class="fact-label">Weight</span><span class="fact-value">71 kg</span></div>
+            <div class="fact-item"><span class="fact-label">Chest / Waist / Hips</span><span class="fact-value">96 / 77 / 82 cm</span></div>
+            <div class="fact-item"><span class="fact-label">Suit</span><span class="fact-value">48 · M</span></div>
+            <div class="fact-item"><span class="fact-label">Collar</span><span class="fact-value">37 cm</span></div>
+            <div class="fact-item"><span class="fact-label">Shoe</span><span class="fact-value">EU 43</span></div>
+            <div class="fact-item"><span class="fact-label">Hair</span><span class="fact-value">Dark blond · medium</span></div>
+            <div class="fact-item"><span class="fact-label">Eyes</span><span class="fact-value">Green–blue</span></div>
+            <div class="fact-item"><span class="fact-label">Skin</span><span class="fact-value">Fair</span></div>
+            <div class="fact-item"><span class="fact-label">Beard</span><span class="fact-value">Flexible · clean to stubble</span></div>
+            <div class="fact-item"><span class="fact-label">Base / Travel</span><span class="fact-value">Berlin · DACH &amp; Europe (self-funded)</span></div>
+        </div>
+
+        <div class="facts-details fade-in">
+            <div class="facts-col">
+                <h3>Type</h3>
+                <ul>
+                    <li>Intellectual · melancholic · cinematic · cheeky</li>
+                    <li>Editorial &amp; character range</li>
+                    <li>Commercial-ready (tattoos concealed under standard clothing)</li>
+                </ul>
+            </div>
+
+            <div class="facts-col">
+                <h3>Languages</h3>
+                <ul>
+                    <li><strong>German</strong> — native</li>
+                    <li><strong>English</strong> — fluent, light German accent</li>
+                    <li><strong>Russian</strong> — conversational (B1–B2)</li>
+                </ul>
+            </div>
+
+            <div class="facts-col">
+                <h3>Skills</h3>
+                <ul>
+                    <li><strong>Music</strong> — piano, guitar, trumpet (advanced); electric bass (intermediate); vocals (baritone)</li>
+                    <li><strong>Sport</strong> — basketball, football, climbing, tennis, parkour, trail running, swimming</li>
+                    <li><strong>Dance</strong> — contemporary &amp; club (own style, electronic); ballroom basics</li>
+                    <li><strong>Stage</strong> — 600+ live shows (Expo 2015 Milano, German Pavilion)</li>
+                </ul>
+            </div>
+
+            <div class="facts-col">
+                <h3>Recent &amp; Ongoing</h3>
+                <ul>
+                    <li>Small role in upcoming Brandenburg-Krimi (TBA)</li>
+                    <li>Editorial: <em>Word on a Wing</em> — KALTBLUT Magazine, 02/2024</li>
+                    <li>Ongoing background work for film &amp; TV</li>
+                    <li>Multiple live music projects</li>
+                </ul>
+            </div>
+
+            <div class="facts-col">
+                <h3>Markings</h3>
+                <ul>
+                    <li>Tattoos: all concealed under standard clothing (T-shirt &amp; jeans)</li>
+                    <li>Piercings: ear (left), nose (right) — both removable</li>
+                </ul>
+            </div>
+
+            <div class="facts-col">
+                <h3>Representation</h3>
+                <ul>
+                    <li>Freelance — direct bookings welcome</li>
+                    <li>Listed via Castingbase &amp; Raya Models</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="facts-note fade-in">
+            Download sedcard · Coming soon
+        </div>
+    </div>
 </section>
 
 <!-- Portfolio -->
@@ -928,8 +1173,12 @@
     </div>
 
     <div class="press-credit fade-in">
-        <strong>Kaltblut Magazine</strong> — &ldquo;Word on a Wing&rdquo; Editorial<br>
-        Photography: Liza Mandelshtam
+        <strong>KALTBLUT Magazine</strong> — &ldquo;Word on a Wing&rdquo;, February 2024<br>
+        Photography: <a href="https://www.instagram.com/ali.s.hussain" target="_blank" rel="noopener">Ali Hussain</a> &nbsp;·&nbsp;
+        Styling: <a href="https://www.instagram.com/lizaagafonova_" target="_blank" rel="noopener">Liza Agafonova</a>
+        (Balenciaga, Faddewo, <a href="https://www.instagram.com/faddewo" target="_blank" rel="noopener">@faddewo</a>, 6900haus, Stylist&rsquo;s archive) &nbsp;·&nbsp;
+        Assistant Styling: Maksym Fadeev &nbsp;·&nbsp;
+        Model: Lukas Heger
     </div>
 
     <a href="https://www.kaltblut-magazine.com/word-on-a-wing/" target="_blank" rel="noopener" class="press-link fade-in">View in Kaltblut Magazine &rarr;</a>
@@ -1087,11 +1336,12 @@
         Verf&uuml;gbar f&uuml;r Film, Werbung, Editorial und k&uuml;nstlerische Projekte.
     </p>
     <a href="mailto:lukas.heger@mailbox.org" class="contact-email fade-in">lukas.heger@mailbox.org</a>
+    <a href="tel:+4917643607936" class="contact-phone fade-in">+49 176 43607936</a>
 
     <div class="contact-links fade-in">
         <a href="https://www.kaltblut-magazine.com/word-on-a-wing/" target="_blank" rel="noopener" class="contact-link">Kaltblut Magazine</a>
-        <a href="https://www.castingbase.de" target="_blank" rel="noopener" class="contact-link">Castingbase</a>
-        <a href="https://www.instagram.com/sygchysis" target="_blank" rel="noopener" class="contact-link">Instagram</a>
+        <a href="https://www.castingbase.de/profil/lukas-heger" target="_blank" rel="noopener" class="contact-link">Castingbase</a>
+        <a href="https://www.instagram.com/sygchysis/" target="_blank" rel="noopener" class="contact-link">Instagram</a>
     </div>
 </section>
 
